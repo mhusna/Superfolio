@@ -6,10 +6,10 @@ namespace Superfolio.ViewComponents.Feature
 {
     public class FeatureList:ViewComponent
     {
-        FeatureManager featureManager = new FeatureManager(new EfFeatureRepository());
+        FeatureManager manager = new FeatureManager(new EfFeatureRepository());
         public IViewComponentResult Invoke()
         {
-            var values = featureManager.TGetList();
+            var values = manager.TGetList();
             return View(values);
         }
     }
