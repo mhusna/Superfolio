@@ -13,5 +13,7 @@ namespace EntityLayer
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string ImageUrl { get; set; }
+        public string ProjectUrl { get; set; }
+        public string ImageSliderUrl { get; set; }
     }
 }
