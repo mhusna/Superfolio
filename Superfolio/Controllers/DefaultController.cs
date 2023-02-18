@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Superfolio.Controllers
 {
@@ -16,6 +19,23 @@ namespace Superfolio.Controllers
 
         public PartialViewResult NavbarPartial()
         {
+            return PartialView();
+        }
+
+        [HttpGet]
+        public PartialViewResult SendMessage() {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public PartialViewResult SendMessage(Message message)
+        {
+            MessageManager manager = new MessageManager(new EfMessageRepository());
+            
+            message.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            message.Status = true;
+            manager.TAdd(message);
+
             return PartialView();
         }
     }
